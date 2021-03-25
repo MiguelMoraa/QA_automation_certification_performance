@@ -1,11 +1,11 @@
 config:
   target: "https://api.todoist.com"
   phases:
-    - duration: 30
-      arrivalRate: 30
+    - duration: 60
+      arrivalRate: 20
       name: "Phase 1"
     - duration: 60
-      arrivalRate: 60
+      arrivalRate: 80
       name: "Phase 2"
   defaults:
     headers:
