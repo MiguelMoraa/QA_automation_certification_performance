@@ -1,9 +1,12 @@
 config:
   target: "https://api.todoist.com"
   phases:
-    - duration: 1
-      arrivalRate: 1
+    - duration: 30
+      arrivalRate: 30
       name: "Phase 1"
+    - duration: 60
+      arrivalRate: 60
+      name: "Phase 2"
   defaults:
     headers:
       Authorization: Bearer {{ $processEnvironment.TOKEN }}

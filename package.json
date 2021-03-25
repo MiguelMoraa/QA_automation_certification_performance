@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test-performance": "artillery run todoist_performance.yml",
-    "test-performance-json": "artillery run --output reports/report.json todoist_performance.yml",
-    "test-performance-html": "artillery run --output reports/report.html todoist_performance.yml",
-    "test-performance-report": "npm run test-performance-json && npm run test-performance-html",
+    "test-performance-report": "artillery run --output reports/report.json todoist_performance.yml && artillery report --output reports/report.html reports/report.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
