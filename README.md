@@ -12,7 +12,7 @@ This is a repository of QA Automation Certification performance testing for the 
 - Run command `npm init`
 - Run command `npm install node`
 - Run command `npm install artillery`
-- Run command `npm install faker`
+
 
 # Project Structure
 

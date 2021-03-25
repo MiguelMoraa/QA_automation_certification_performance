@@ -1,20 +1,19 @@
 config:
   target: "https://api.todoist.com"
   phases:
-    - duration: 60
-      arrivalRate: 20
+    - duration: 30
+      arrivalRate: 30
       name: "Phase 1"
     - duration: 60
-      arrivalRate: 80
+      arrivalRate: 60
       name: "Phase 2"
   defaults:
     headers:
       Authorization: Bearer {{ $processEnvironment.TOKEN }}
       Content-type: application/json
-  processor: "./my-functions.js"
+  #processor: "./myProcessor.js"
 scenarios:
   - flow:
-      - function: "generateRandomData"
       # GET active tasks
       - get:
           url: "/rest/v1/tasks"
@@ -22,7 +21,7 @@ scenarios:
       - post:
           url: "/rest/v1/tasks"
           json:
-            content: "{{ nameTask }}"
+            content: "I am a new task"
             due_string: "tomorrow at 14:00"
             due_lang: "en"
             priority: 1
@@ -38,7 +37,7 @@ scenarios:
       - post:
           url: "/rest/v1/tasks/{{ id }}"
           json:
-            content: "{{ nameTask }}"
+            content: "I am a update task"
       # COMPLETE task
       - post:
           url: "/rest/v1/tasks/{{ id }}/close"
