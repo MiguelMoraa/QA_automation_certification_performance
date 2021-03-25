@@ -11,9 +11,10 @@ config:
     headers:
       Authorization: Bearer {{ $processEnvironment.TOKEN }}
       Content-type: application/json
-  #processor: "./myProcessor.js"
+  processor: "./my-functions.js"
 scenarios:
   - flow:
+      - function: "generateRandomData"
       # GET active tasks
       - get:
           url: "/rest/v1/tasks"
@@ -21,7 +22,7 @@ scenarios:
       - post:
           url: "/rest/v1/tasks"
           json:
-            content: "I am a new task"
+            content: "{{ nameTask }}"
             due_string: "tomorrow at 14:00"
             due_lang: "en"
             priority: 1
@@ -37,7 +38,7 @@ scenarios:
       - post:
           url: "/rest/v1/tasks/{{ id }}"
           json:
-            content: "I am a update task"
+            content: "{{ nameTask }}"
       # COMPLETE task
       - post:
           url: "/rest/v1/tasks/{{ id }}/close"
